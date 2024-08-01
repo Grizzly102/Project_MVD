@@ -1,0 +1,58 @@
+﻿<Window x:Class="kartoteka.AddCrime"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:kartoteka" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        Title="" Height="470" Width="300" ResizeMode="NoResize" FontFamily="times new roman" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <StackPanel Margin="0 0 0 0 " Grid.ColumnSpan="2" HorizontalAlignment="Left">
+            <StackPanel Margin="0 10 0 0 " Orientation="Horizontal" HorizontalAlignment="Right">
+                <Label Content="Серия пасспорта:"/>
+                <xctk:MaskedTextBox  Mask="0000" x:Name="PassSr" Width="100"/>
+            </StackPanel>
+            <StackPanel Margin="0 10 0 0 " Orientation="Horizontal" HorizontalAlignment="Right">
+                <Label Content="Номер пасспорта:"/>
+                <xctk:MaskedTextBox Mask="000000" x:Name="PassNb" Width="100"/>
+            </StackPanel>
+            <StackPanel Margin="0 10 0 0" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Label Content="ФИО:"/>
+                <TextBox x:Name="FName" Width="100"/>
+            </StackPanel>
+            <StackPanel  Margin="0 10 0 0 "  Orientation="Horizontal" HorizontalAlignment="Right">
+                <Label Content="Дата рождения:"/>
+                <DatePicker Name="BirthDate" DisplayDate="12/31/2004">
+                    <DatePicker.BlackoutDates>
+                        <CalendarDateRange Start="12/31/2004"/>
+                    </DatePicker.BlackoutDates>
+                </DatePicker>
+            </StackPanel>
+            <StackPanel Margin="0 10 0 0" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Label Content="Место рождения:"/>
+                <TextBox x:Name="BirthPlace" Width="100"/>
+            </StackPanel>
+            <StackPanel Margin="0 10 0 0 " Orientation="Horizontal" HorizontalAlignment="Right">
+                <Label Content="Место нахождения:"/>
+                <TextBox x:Name="LastPlace" Width="100"/>
+            </StackPanel>
+            <StackPanel Margin="0 10 0 0 " Orientation="Horizontal" HorizontalAlignment="Right">
+                <Label Content="Рост:"/>
+                <xctk:MaskedTextBox Mask="000" x:Name="HeightText" Width="100"/>
+            </StackPanel>
+            <StackPanel Margin="0 10 0 0" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Label Content="Цвет волос:"/>
+                <TextBox x:Name="HColor" Width="100"/>
+            </StackPanel>
+            <StackPanel Margin="0 10 0 0" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Label Content="Цвет глаз:"/>
+                <TextBox x:Name="EColor" Width="100"/>
+            </StackPanel>
+            <StackPanel Margin="0 10 0 0" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Label Content="Особые приметы:"/>
+                <TextBox x:Name="SpecSigns" Width="100"/>
+            </StackPanel>
+            <Button Height="25" VerticalAlignment="Bottom"  HorizontalAlignment="Center" Content="Добавить" Margin="5 20 0 0" Name="AddButton" Click="AddButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

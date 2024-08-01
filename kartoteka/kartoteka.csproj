@@ -1,0 +1,57 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\1z.jpg" />
+    <None Remove="Resources\2z.jpg" />
+    <None Remove="Resources\3z.jpg" />
+    <None Remove="Resources\backk.png" />
+    <None Remove="Resources\default.png" />
+    <None Remove="Resources\gerb-mvd.png" />
+    <None Remove="Resources\inf.png" />
+    <None Remove="Resources\kaif.jpg" />
+    <None Remove="Resources\p1.jpg" />
+    <None Remove="Resources\p2.png" />
+    <None Remove="Resources\p3.png" />
+    <None Remove="Resources\p4.png" />
+    <None Remove="Resources\papka.png" />
+    <None Remove="Resources\remove.png" />
+    <None Remove="Resources\z4.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Extended.Wpf.Toolkit" Version="4.6.0" />
+    <PackageReference Include="iTextSharp" Version="5.5.13.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="7.0.19" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.19">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\1z.jpg" />
+    <Resource Include="Resources\2z.jpg" />
+    <Resource Include="Resources\3z.jpg" />
+    <Resource Include="Resources\backk.png" />
+    <Resource Include="Resources\default.png" />
+    <Resource Include="Resources\gerb-mvd.png" />
+    <Resource Include="Resources\inf.png" />
+    <Resource Include="Resources\kaif.jpg" />
+    <Resource Include="Resources\p1.jpg" />
+    <Resource Include="Resources\p2.png" />
+    <Resource Include="Resources\p3.png" />
+    <Resource Include="Resources\p4.png" />
+    <Resource Include="Resources\papka.png" />
+    <Resource Include="Resources\remove.png" />
+    <Resource Include="Resources\z4.png" />
+  </ItemGroup>
+
+</Project>

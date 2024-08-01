@@ -1,0 +1,166 @@
+﻿<Window x:Class="kartoteka.DealList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:kartoteka"
+        mc:Ignorable="d"
+    Title="" FontFamily="times new roman" Height="645" Width="950" MinHeight="645" MinWidth="940" WindowStartupLocation="CenterScreen" >
+    <Grid Background="LightGray">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition/>
+            <ColumnDefinition />
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+
+        </Grid.RowDefinitions>
+        <Button Grid.Column="2" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Center" Content="Добавить дело" FontSize="15" Height="30" Name="AddCase" Margin="0,70,0,0" Click="AddCase_Click"/>
+
+        <CheckBox x:Name="MyCheck" Height="20" VerticalAlignment="Top" Content="Скрыть чужие дела" Grid.Column="0" Grid.Row="2" FontSize="17" Margin="0,10,0,0" HorizontalAlignment="Right" Width="313" Unchecked="MyCheck_Unchecked" Checked="MyCheck_Checked"/>
+        <Label Grid.Column="2" VerticalAlignment="Top" Content="Поиск по дате" HorizontalAlignment="Center" FontSize="15" Margin="0,20,15,0"/>
+        <Label Grid.Column="2" VerticalAlignment="Center" Content="От" HorizontalAlignment="Center" Margin="0,30,180,0"/>
+        <Label Grid.Column="2" Grid.Row="1" VerticalAlignment="Top" Content="До" HorizontalAlignment="Center" Margin="0,0,180,5"/>
+        <Label FontSize="15" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Content="Степень тяжести преступления" HorizontalAlignment="Center" Margin="0,0,0,0"/>
+        <Label Grid.Row="2" Width="100" HorizontalAlignment="Left" VerticalAlignment="Bottom" Name="CountLable" FontSize="13"/>
+        <Button x:Name="ExportButton" Grid.Row="2" HorizontalAlignment="Left" Content="Экспорт" FontSize="15" Margin="103,70,0,0" Click="ExportButton_Click" Height="30" VerticalAlignment="Top"/>
+        <Button Grid.Column="2" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Center" Height="30" Width="100" Content="Найти" Margin="0,10,0,0" Name="DateSearch" Click="DateSearch_Click"/>
+        <Button Grid.Column="2" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Center" Height="30" Width="100" Content="Сбросить" Margin="0,10,0,0" Name="DateDel" Visibility="Hidden" Click="DateDel_Click"/>
+        <DatePicker Name="admdatepicker" Margin="0,30,0,0" Grid.Column="2" HorizontalAlignment="Center" Width="150" Height="25"/>
+        <DatePicker Name="issuedatepicker" Margin="0,0,0,5" Grid.Row="1" Grid.Column="2"  Width="150" Height="25" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+        <ComboBox FontSize="16" x:Name="WeightBox" Grid.Column="1" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Center" Height="30" Width="200"  Margin="0,10,0,0" SelectionChanged="WeightBox_SelectionChanged">
+            <ComboBoxItem Content="Всё"/>
+        </ComboBox>
+        <TextBlock Grid.Column="1" Text="Картотека МВД" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,30"/>
+        <TextBlock x:Name="PName" Grid.Row="1" Text="Иванов.B.B" FontSize="15"  VerticalAlignment="Top" HorizontalAlignment="Left"  Margin="0,7,0,0"/>
+        <Button x:Name="BackBt"  HorizontalAlignment="Left" Margin="0,0,0,0" Height="25" VerticalAlignment="Top" Width="32" Click="BackBt_Click" >
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Image Name="image"   Stretch="Fill" Source="Resources/backk.png" />
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver"  Value="true">
+                            <Setter TargetName="image" Property="Source" Value="Resources/backk.png"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed"  Value="true">
+                            <Setter TargetName="image" Property="Source"  Value="Resources/backk.png" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <ListView BorderThickness="0" Background="LightGray" x:Name="List" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="3" Grid.RowSpan="6" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Center">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="IsSelected" Value="True"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal" HorizontalAlignment="Left"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="Black" BorderThickness="2">
+                        <Grid Width="288" Height="360" Background="White">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="170" />
+                                <RowDefinition Height="105"/>
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+
+                            <Button Name="FullDealInfo"  Grid.Row="0" Margin="10" Click="Button_Click">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Image Height="150" Width="150" Name="image"   Stretch="Fill" Source="Resources\kaif.jpg" />
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver"  Value="true">
+                                                <Setter TargetName="image" Property="Source" Value="Resources\kaif.jpg" />
+                                            </Trigger>
+                                            <Trigger Property="IsPressed"  Value="true">
+                                                <Setter TargetName="image" Property="Source"  Value="Resources\kaif.jpg" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Button.Template>
+
+
+                            </Button>
+                            <TextBlock Grid.Row="1"  HorizontalAlignment="Center" FontSize="14" FontWeight="Bold">
+                             <Run Text="Дело №" FontWeight="Bold"/>
+                                <Run Text="{Binding CaseId}"/>
+                            </TextBlock>
+                            <StackPanel Grid.Row="1" Margin="10 20 0 0">
+                                <TextBlock>
+                                <Run Text="Открытие дела:" FontWeight="Bold"/>
+                                <Run Text="{Binding CaseOpeningDate, StringFormat='{}{0:dd.MM.yyyy}'}"/>
+                                </TextBlock>
+
+                                <TextBlock>
+                                <Run Text="Место преступления:" FontWeight="Bold" />
+                                <Run Text="{Binding CrimeScence}"/>
+                                </TextBlock>
+                                <TextBlock >
+                                <Run Text="Статья:" FontWeight="Bold"/>
+                                <Run Text="{Binding CrimeArticle}" />
+                                <Run Text="УК РФ" />
+                                </TextBlock>
+                                <TextBlock >
+                                <Run Text="Тяжесть преступления:" FontWeight="Bold" />
+                                <Run Text="{Binding CrimeWeight}"/>
+                                </TextBlock>
+                                <TextBlock >
+                                <Run Text="Дело ведет:" FontWeight="Bold" />
+                                <Run Text="{Binding NameP, Mode=OneWay}" />
+                                </TextBlock>
+                            </StackPanel>
+
+
+                            <Button Click="infoBTN_Click" x:Name="infoBTN" Grid.Row="2" Margin="5 0 0 0" Width="60" Height="60" HorizontalAlignment="Left" BorderBrush="White" VerticalAlignment="Center" >
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Image Name="image"   Stretch="Fill" Source="Resources\inf.png" />
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver"  Value="true">
+                                                <Setter TargetName="image" Property="Source" Value="Resources\inf.png" />
+                                            </Trigger>
+                                            <Trigger Property="IsPressed"  Value="true">
+                                                <Setter TargetName="image" Property="Source"  Value="Resources\inf.png" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+
+
+
+
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Click="MenuItem_Click" Header="Удалить">
+                        <MenuItem.Icon>
+                            <Image Source="Resources/remove.png"/>
+                        </MenuItem.Icon>
+
+                    </MenuItem>
+                </ContextMenu>
+            </ListView.ContextMenu>
+        </ListView>
+
+    </Grid>
+</Window>
